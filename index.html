@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matthias Aamhra Härtwig</title>
+  <style>
+    :root {
+      --brand-blue: #0A1F44;
+      --brand-gold: #FFD700;
+      --brand-gold-hover: #FFC300;
+      --text-light: #E0E0E0;
+      --text-dim: #BFC7D5;
+      --radius: 10px;
+      --shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--brand-blue);
+      color: var(--text-light);
+    }
+    a { color: var(--brand-gold); text-decoration: none; }
+    a:hover { color: var(--brand-gold-hover); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    header {
+      background: rgba(10,31,68,0.95);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky; top: 0; z-index: 1000;
+    }
+    nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: bold; font-size: 1.3rem; color: var(--brand-gold); }
+    .menu { display: flex; gap: 20px; }
+    .menu a { padding: 6px 10px; border-radius: 6px; }
+    .menu a:hover { background: rgba(255,215,0,0.1); }
+
+    h2 {
+      color: var(--brand-gold);
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .scroll-wrapper {
+      position: relative;
+    }
+    .scroll-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0 80px 10px;
+      scroll-behavior: smooth;
+    }
+    .scroll-container::-webkit-scrollbar { height: 8px; }
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: var(--brand-gold);
+      border-radius: 4px;
+    }
+    .scroll-container::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+    }
+    .card {
+      flex: 0 0 260px;
+      background: #0F2A5E;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .card-body {
+      padding: 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+    .card-title {
+      font-weight: bold;
+      margin: 0 0 6px;
+      min-height: 2.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-text {
+      color: var(--text-dim);
+      margin: 0 0 6px;
+    }
+    .price {
+      color: var(--brand-gold);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      background: var(--brand-gold);
+      color: var(--brand-blue);
+      font-weight: bold;
+      border-radius: 6px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: var(--brand-gold-hover);
+    }
+    .scroll-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15, 42, 94, 0.8);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .scroll-arrow.left { left: -80px; }
+    .scroll-arrow.right { right: -80px; }
+
+    .music-player { display: flex; justify-content: center; margin-top: 20px; }
+    .music-player iframe { max-width: 100%; border-radius: var(--radius); }
+
+    form {
+      max-width: 500px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    input, textarea {
+      padding: 10px;
+      border-radius: var(--radius);
+      border: 1px solid var(--brand-gold);
+      background: var(--brand-blue);
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+    input[type="submit"] {
+      background: var(--brand-gold);
+      color: var(--brand-blue);
+      font-weight: bold;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover { background: var(--brand-gold-hover); }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 0;
+      text-align: center;
+      color: var(--text-dim);
+      margin-top: 50px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">Matthias Aamhra Härtwig</div>
+      <div class="menu">
+        <a href="#art">Home</a>
+        <a href="#music">Music</a>
+        <a href="#contact">Contact Me</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- Art Section -->
+<section id="art" style="padding:70px 0;">
+  <div class="container">
+    <h2>Art</h2>
+
+    <!-- Initial grid -->
+    <div class="grid">
+      <div class="card">
+        <img src="images/artwork1.PNG" alt="">
+        <div class="card-body">
+          <div class="card-info">
+            <h3 class="card-title">Blauer Bloomenstrauß</h3>
+            <p class="card-text">For Sale</p>
+            <p class="price">Price on Request</p>
+          </div>
+          <a href="#contact" class="btn">Enquire</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/artwork2.PNG" alt="">
+        <div class="card-body">
+          <div class="card-info">
+            <h3 class="card-title">Co-volution</h3>
+            <p class="card-text">For Sale</p>
+            <p class="price">Price on Request</p>
+          </div>
+          <a href="#contact" class="btn">Enquire</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/artwork3.PNG" alt="">
+        <div class="card-body">
+          <div class="card-info">
+            <h3 class="card-title">Freedom</h3>
+            <p class="card-text">For Sale</p>
+            <p class="price">Price on Request</p>
+          </div>
+          <a href="#contact" class="btn">Enquire</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/artwork4.PNG" alt="">
+        <div class="card-body">
+          <div class="card-info">
+            <h3 class="card-title">Golden Lining</h3>
+            <p class="card-text">For Sale</p>
+            <p class="price">Price on Request</p>
+          </div>
+          <a href="#contact" class="btn">Enquire</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden grid -->
+    <div id="moreArt" class="grid">
+      <div class="card"><img src="images/artwork5.PNG" alt=""><div class="card-body"><div class="card-info"><h3 class="card-title">Inner-Dance</h3><p class="card-text">For Sale</p><p class="price">Price on Request</p></div><a href="#contact" class="btn">Enquire</a></div></div>
+      <div class="card"><img src="images/artwork6.PNG" alt=""><div class="card-body"><div class="card-info"><h3 class="card-title">La Mar</h3><p class="card-text">For Sale</p><p class="price">Price on Request</p></div><a href="#contact" class="btn">Enquire</a></div></div>
+      <div class="card"><img src="images/artwork7.PNG" alt=""><div class="card-body"><div class="card-info"><h3 class="card-title">Layers of Us</h3><p class="card-text">For Sale</p><p class="price">Price on Request</p></div><a href="#contact" class="btn">Enquire</a></div></div>
+      <div class="card"><img src="images/artwork8.PNG" alt=""><div class="card-body"><div class="card-info"><h3 class="card-title">Now O'Clock</h3><p class="card-text">For Sale</p><p class="price">Price on Request</p></div><a href="#contact" class="btn">Enquire</a></div></div>
+      <div class="card"><img src="images/artwork9.PNG" alt=""><div class="card-body"><div class="card-info"><h3 class="card-title">Waayves</h3><p class="card-text">For Sale</p><p class="price">Price on Request</p></div><a href="#contact" class="btn">Enquire</a></div></div>
+      <div class="card"><img src="images/artwork10.jpg" alt=""><div class="card-body"><div class="card-info"><h3 class="card-title">Tantra</h3><p class="card-text">For Sale</p><p class="price">Price on Request</p></div><a href="#contact" class="btn">Enquire</a></div></div>
+      <div class="card"><img src="images/artwork11.PNG" alt=""><div class="card-body"><div class="card-info"><h3 class="card-title">Youniverse</h3><p class="card-text">For Sale</p><p class="price">Price on Request</p></div><a href="#contact" class="btn">Enquire</a></div></div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="center">
+      <button class="btn" id="viewMoreBtn" onclick="expandArt()">View More</button>
+      <button class="btn" id="collapseBtn" onclick="collapseArt()">Collapse</button>
+    </div>
+  </div>
+</section>
+
+<style>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #0F2A5E;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 420px; /* desktop height */
+  transition: transform 0.3s ease;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.card img {
+  width: 100%;
+  height: 220px; /* desktop image height */
+  object-fit: cover;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  text-align: center;
+}
+
+.card-info {
+  height: 100px; /* fixed text block height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: var(--brand-gold);
+}
+
+.card-text { margin-bottom: 5px; color: var(--text-dim); }
+.price { font-weight: bold; color: var(--brand-gold); }
+
+#moreArt {
+  height: 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  overflow: hidden;
+  transition: all 0.6s ease;
+}
+
+#moreArt.show {
+  height: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.center { text-align: center; margin-top: 20px; }
+#collapseBtn { display: none; }
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column + smaller heights */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    height: 360px;
+  }
+  .card img {
+    height: 180px;
+  }
+  .card-info {
+    height: 80px;
+  }
+}
+</style>
+
+<script>
+function expandArt() {
+  document.getElementById('moreArt').classList.add('show');
+  document.getElementById('viewMoreBtn').style.display = "none";
+  document.getElementById('collapseBtn').style.display = "inline-block";
+}
+function collapseArt() {
+  document.getElementById('moreArt').classList.remove('show');
+  document.getElementById('collapseBtn').style.display = "none";
+  document.getElementById('viewMoreBtn').style.display = "inline-block";
+}
+</script>
+    </div>
+  </div>
+</section>
+
+  <!-- Music Section -->
+  <section id="music" class="section" style="padding:70px 0;">
+    <div class="container">
+      <h2>Music</h2>
+      <div class="music-player">
+        <!-- Example: SoundCloud embed -->
+         <iframe
+          title="AMHRA on SoundCloud"
+          width="100%" height="450"
+          scrolling="no" frameborder="no"
+          allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/amhra&color=%23FFD700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+        </iframe>
+      </div>
+      <p>
+        <a class="cta" href="https://soundcloud.com/amhra" target="_blank" rel="noopener">Visit SoundCloud</a>
+          <!-- Bandcamp embed (placeholder) -->
+      <h2>On Bandcamp</h2>
+
+      <!-- Replace the src below with your own Bandcamp embed when ready -->
+      <div class="embed" style="margin-bottom: 24px; height: 450px;">
+        <iframe
+          title="Bandcamp player"
+          style="border: 0; width: 100%; height: 100%;"
+          src="https://aamra.bandcamp.com/album/savasana-live-recordings"
+          seamless>
+          <a href="https://aamra.bandcamp.com/">Bandcamp — AAMRA</a>
+        </iframe>
+        </p>
+                <a class="cta" href="https://aamra.bandcamp.com/community" target="_blank" rel="noopener" style="margin-left:8px;">Visit Bandcamp</a>
+      </div>
+  </section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" style="padding:70px 0;">
+  <div class="container">
+    <h2>Contact Me</h2>
+    <div class="contact-grid">
+      
+      <!-- Contact Form -->
+      <form id="contact-form" class="contact-form" action="https://formspree.io/f/xwpnolja" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="_replyto" placeholder="Your email address" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn">Send Message</button>
+
+        <!-- Feedback message -->
+        <p id="form-status" class="form-status"></p>
+      </form>
+      
+      <!-- Updated Contact Info -->
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p><strong>Email:</strong> maham@free.de</p>
+        <p><strong>Phone:</strong> +49 179 3046394</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/beyond_aamhra?igsh=MWJ2aHY2N2x4NjJxbw%3D%3D&utm_source=qr" target="_blank">Instagram</a>
+          <a href="https://www.instagram.com/waay.united?igsh=MTd5ajh3ZDBydGEwcA==" target="_blank">WAAY</a>
+          <a href="https://www.facebook.com/matthias.hartwig.9" target="_blank">Facebook</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION STYLES -->
+<style>
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--brand-gold, #FFD700);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: var(--radius, 5px);
+  font-size: 1em;
+  background: #1013c271;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--brand-gold, #FFD700);
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  outline: none;
+}
+
+.contact-form .btn {
+  background: var(--brand-gold, #FFD700);
+  color: #0F2A5E;
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius, 5px);
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form .btn:hover {
+  background: var(--brand-gold-hover, #FFC300);
+}
+
+.contact-info h3 {
+  margin-bottom: 15px;
+  color: var(--brand-gold, #FFD700);
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+  color: var(--text-light, #ccc);
+}
+
+.social-links a {
+  display: inline-block;
+  margin-right: 15px;
+  color: var(--brand-gold, #FFD700);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #fff;
+}
+
+/* Feedback messages */
+.form-status {
+  margin-top: 15px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.form-status.sending { color: #999; }
+.form-status.success { color: #28a745; }
+.form-status.error { color: #dc3545; }
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<!-- CONTACT FORM SCRIPT -->
+<script>
+const form = document.getElementById('contact-form');
+const status = document.getElementById('form-status');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  status.textContent = "Sending...";
+  status.className = "form-status sending";
+
+  const data = new FormData(form);
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      status.textContent = "✅ Thanks! Your message has been sent.";
+      status.className = "form-status success";
+      form.reset();
+    } else {
+      const resData = await response.json();
+      if (resData.errors) {
+        status.textContent = resData.errors.map(err => err.message).join(", ");
+      } else {
+        status.textContent = "❌ Oops! Something went wrong.";
+      }
+      status.className = "form-status error";
+    }
+  } catch (error) {
+    status.textContent = "❌ Network error. Please try again.";
+    status.className = "form-status error";
+  }
+});
+</script>

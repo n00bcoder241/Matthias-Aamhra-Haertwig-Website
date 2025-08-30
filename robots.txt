@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /about.html
+Disallow: /therapy.html
+Disallow: /shop.html
+Disallow: /community.html
+Disallow: /blog.html
+Disallow: /press.html
+Disallow: /events.html
+Disallow: /gallery.html
+Disallow: /portfolio.html
+Disallow: /services.html
